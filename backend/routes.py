@@ -2,6 +2,9 @@ from app import app, db
 from flask import request, jsonify
 from models import User
 
+# CRUD operations
+# create, read, update, delete
+
 # Get all users
 @app.route('/api/users', methods=['GET'])
 def get_users():
