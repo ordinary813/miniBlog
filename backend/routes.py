@@ -1,6 +1,6 @@
 from app import app, db
 from flask import request, jsonify
-from models import User
+from models import User, Post
 
 # CRUD operations
 # create, read, update, delete
@@ -9,7 +9,7 @@ from models import User
 @app.route('/api/users', methods=['GET'])
 def get_users():
     users = User.query.all()
-    result = [friend.to_json() for friend in users]
+    result = [user.to_json() for user in users]
     return jsonify(result)
 
 # Add a new user
@@ -19,7 +19,7 @@ def add_user():
         data = request.get_json()
 
         # Make sure all required fields are present
-        required_fields = ['username', 'role']
+        required_fields = ['username', 'role', 'password']
         for field in required_fields:
             if field not in data:
                 return jsonify({"error": f"Missing {field} field"}), 400
@@ -27,13 +27,14 @@ def add_user():
         username = data.get('username')
         role = data.get('role')
         img_url = f'https://avatar.iran.liara.run/public?usearname=[{username}]'
+        password = data.get('password')
 
-        new_user = User(username=username, role=role, img_url=img_url)
+        new_user = User(username=username, role=role, img_url=img_url, password=password)
         
         db.session.add(new_user)
         db.session.commit()
 
-        return jsonify("msg: User added successfully!"), 201
+        return jsonify({"msg": "User added successfully!"}), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500

@@ -1,7 +1,10 @@
 import requests
 
-def test_create_user(username, role):   
-    response = requests.post("http://127.0.0.1:5000/api/users", json={"username": username, "role": role})
+def request_create_user(username, role, password):   
+    response = requests.post("http://127.0.0.1:5000/api/users", json={
+        "username": username, 
+        "role": role, 
+        "password": password})
     print(response.json())
 
 def get_all_friends():
@@ -18,13 +21,14 @@ def request_update_user(username, new_role):
     response = requests.patch(f'http://127.0.0.1:5000/api/users/{username}', json={"role": new_role})
     print(response.json())
 
-action = input("Choose an action (create, get, delete, update): ")
+action = input("create/get/delete/update: ")
 
 if action == 'create':
     print("Provide a user and a role")
     user = input("User: ")
     role = input("Role: ")
-    test_create_user(user, role)
+    password = input("Password: ")
+    request_create_user(user, role, password)
 elif action == 'get':
     print("Getting all users")
     get_all_friends()

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Text, Stack, Container } from "@chakra-ui/react"
 import Navbar from "./components/Navbar"
 import PostGrid from './components/PostGrid'
-import { useColorModeValue } from './components/ui/color-mode'
+import { useColorModeValue } from "@/components/ui/color-mode"
 
 
 function App() {
