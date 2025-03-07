@@ -6,12 +6,13 @@ import { useColorModeValue } from "@/components/ui/color-mode"
 
 
 function App() {
+  const [posts, setPosts] = useState([])
   return (
     <Stack minH={"100vh"}
       align={"center"}    //align to center vertically
       bg={useColorModeValue("gray.50", "gray.900")}
     >
-      <Navbar />
+      <Navbar setPosts={setPosts}/>
       <Container>
         <Text
           fontSize={{ base: "3xl", md: "50" }}
@@ -31,7 +32,7 @@ function App() {
           </Text>
         </Text>
 
-        <PostGrid />
+        <PostGrid posts={posts} setPosts={setPosts}/>
       </Container>
     </Stack>
   )

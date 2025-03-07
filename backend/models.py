@@ -33,6 +33,6 @@ class Post(db.Model):
         }
 
 # todo: Add the following models
-# Like model
+# Likes
 # Comment model
 # Message model
