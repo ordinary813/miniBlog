@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button, useDisclosure } from '@chakra-ui/react'
+import { Button, Textarea } from '@chakra-ui/react'
 import {
+    DrawerActionTrigger,
     DrawerBackdrop,
     DrawerBody,
     DrawerCloseTrigger,
@@ -10,37 +11,38 @@ import {
     DrawerRoot,
     DrawerTitle,
     DrawerTrigger,
-} from "@/components/ui/drawer"
+  } from "@/components/ui/drawer"
+  
 
 import { BiAddToQueue } from 'react-icons/bi'
 
 const CreatePostModal = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-        <>
-            <Button onClick={onOpen} colorScheme="green">
-                Post
-                <BiAddToQueue size={10} />
-            </Button>
-
-            <DrawerRoot isOpen={isOpen} onClose={onClose}>
-                <DrawerBackdrop />
-                <DrawerContent>
-                    <DrawerCloseTrigger />
-                    <DrawerHeader>
-                        <DrawerTitle>Create Post</DrawerTitle>
-                    </DrawerHeader>
-                    <DrawerBody>
-                        What's on your mind?
-                    </DrawerBody>
-                    <DrawerFooter>
-                        {/* Submit Button to close the drawer */}
-                        <Button colorScheme="blue" onClick={onClose}>Submit</Button>
-                    </DrawerFooter>
-                </DrawerContent>
-            </DrawerRoot>
-        </>
+        <DrawerRoot size={'md'}>
+            <DrawerBackdrop />
+            <DrawerTrigger asChild>
+                <Button size="sm">
+                    Post
+                    <BiAddToQueue />
+                </Button>
+            </DrawerTrigger>
+            <DrawerContent >
+                <DrawerHeader>
+                    <DrawerTitle >Post on Clover</DrawerTitle>
+                </DrawerHeader>
+                <DrawerBody fontSize={'md'}>
+                    <Textarea resize="none" size={"lg"} h={"90%"} placeholder="What's on your mind?" />
+                </DrawerBody>
+                <DrawerFooter>
+                    <DrawerActionTrigger asChild>
+                        <Button variant="outline">Cancel</Button>
+                    </DrawerActionTrigger>
+                    <Button>Save</Button>
+                </DrawerFooter>
+                <DrawerCloseTrigger />
+            </DrawerContent>
+        </DrawerRoot>
     );
 };
 
