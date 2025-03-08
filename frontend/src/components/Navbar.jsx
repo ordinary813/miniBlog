@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Text, Box, Container, Flex, Button } from "@chakra-ui/react"
 import { useColorMode, useColorModeValue } from "@/components/ui/color-mode"
 
@@ -8,6 +9,12 @@ import CreatePostModal from "./CreatePostModal";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode()
+  const navigate = useNavigate()
+
+  const handleNavigation = (route) => {
+    navigate(`/${route.toLowerCase()}`)
+  }
+
   return (
     <Container maxW={'80%'}>
       <Box
@@ -64,6 +71,7 @@ const Navbar = () => {
                 textAlign={"center"}
                 key={item}
                 fontSize={"lg"}
+                onClick={() => handleNavigation(item)}
               >
                 <Text>{item}</Text>
               </Box>

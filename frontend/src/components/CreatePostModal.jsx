@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Textarea } from '@chakra-ui/react'
+import { Button, Textarea, Flex } from '@chakra-ui/react'
 import { useColorModeValue } from '@/components/ui/color-mode'
 
 import {
@@ -16,7 +16,7 @@ import {
 
 
 import { BiAddToQueue } from 'react-icons/bi'
-
+import { MdImage } from 'react-icons/md'
 const CreatePostModal = () => {
     return (
         <DialogRoot size={'lg'}>
@@ -31,12 +31,23 @@ const CreatePostModal = () => {
                     <BiAddToQueue />
                 </Button>
             </DialogTrigger>
-            <DialogContent >
+            <DialogContent
+                h={"80%"}
+            >
                 <DialogHeader>
                     <DialogTitle >Post on Clover</DialogTitle>
                 </DialogHeader>
                 <DialogBody fontSize={'md'}>
+
                     <Textarea resize="none" size={"lg"} h={"90%"} placeholder="What's on your mind?" />
+                    <Flex justifyContent="flex-end" mt={2}>
+                        <Button
+                        bg={useColorModeValue("gray.200", "gray.800")} // Light mode: white, Dark mode: gray.700
+                        color={useColorModeValue("black", "white")}>
+                            <MdImage />
+                        </Button>
+                    </Flex>
+
                 </DialogBody>
                 <DialogFooter>
                     <DialogActionTrigger asChild>
