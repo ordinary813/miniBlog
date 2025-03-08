@@ -9,7 +9,7 @@ import CreatePostModal from "./CreatePostModal";
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <Container maxW={'900px'}>
+    <Container maxW={'80%'}>
       <Box
         px={4}
         my={4}
@@ -27,10 +27,24 @@ const Navbar = () => {
             gap={3}
             display={{ base: "none", sm: "flex" }}
           >
-            <Text>Home</Text>
-            <Text>Services</Text>
-            <Text>About</Text>
-            <Text>Contact</Text>
+
+            {["Home", "Services", "About", "Contact"].map((item) => (
+              <Box
+                px={2} py={4}
+                borderRadius="md"
+                _hover={{
+                  color: "green.500", cursor: "pointer",
+                  transform: "scale(1.05)",
+                }}
+                transition={"all 0.1s ease-in-out"}
+                textAlign={"center"}
+                key={item}
+                fontSize={"lg"}
+              >
+                <Text>{item}</Text>
+              </Box>
+            ))}
+
           </Flex>
 
           {/* Right Side */}
@@ -38,8 +52,22 @@ const Navbar = () => {
             alignItems={"center"}
             gap={3}
           >
-            <Box>Sign In</Box>
-            <Box>Sign Up</Box>
+            {["Login", "Register"].map((item) => (
+              <Box
+                px={2} py={4}
+                borderRadius="md"
+                _hover={{
+                  color: "green.500", cursor: "pointer",
+                  transform: "scale(1.05)",
+                }}
+                transition={"all 0.1s ease-in-out"}
+                textAlign={"center"}
+                key={item}
+                fontSize={"lg"}
+              >
+                <Text>{item}</Text>
+              </Box>
+            ))}
 
             {/* Toggle Color Mode */}
             <Button onClick={toggleColorMode}
@@ -50,7 +78,7 @@ const Navbar = () => {
             >
               {colorMode === "light" ? <IoMoon /> : <LuSun size={20} />}
             </Button>
-            
+
             <CreatePostModal />
           </Flex>
         </Flex>

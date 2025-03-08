@@ -48,6 +48,7 @@ def add_user():
         return jsonify({"error": str(e)}), 500
 
 @app.route('/api/users/<string:username>', methods=['DELETE'])
+# ... NEED TO ALSO DELETE POSTS OF USER
 def delete_user(username):
     try:
         user = User.query.filter_by(username=username).first()

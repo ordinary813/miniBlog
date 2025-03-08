@@ -3,6 +3,7 @@ import { Text, Stack, Container } from "@chakra-ui/react"
 import Navbar from "./components/Navbar"
 import PostGrid from './components/PostGrid'
 import { useColorModeValue } from "@/components/ui/color-mode"
+import React from 'react'
 
 
 function App() {
@@ -12,8 +13,8 @@ function App() {
       align={"center"}    //align to center vertically
       bg={useColorModeValue("gray.50", "gray.900")}
     >
-      <Navbar setPosts={setPosts}/>
-      <Container>
+      <Navbar/>
+      <Container minW={"80%"}>
         <Text
           fontSize={{ base: "3xl", md: "50" }}
           fontWeight={"bold"}

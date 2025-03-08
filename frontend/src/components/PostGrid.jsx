@@ -8,11 +8,12 @@ const PostGrid = ({ posts, setPosts }) => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/posts/')
+        const response = await fetch('http://127.0.0.1:5000/api/posts')
         const data = await response.json()
         if (!response.ok) {
           throw new Error(data.error)
         }
+        // console.log(data)
         setPosts(data)
       } catch (error) {
         console.error(error)
@@ -27,10 +28,15 @@ const PostGrid = ({ posts, setPosts }) => {
       base: "repeat(1, 1fr)",
       md: "repeat(2, 1fr)",
       lg: "repeat(3, 1fr)"
-    }}>
-      {posts.map(post => (
-        <PostCard key={post.id} post={post} />
-      ))}
+    }} gap={4}>
+      {posts && posts.length > 0 ? (
+        posts.map(post => (
+          <PostCard key={post.id} post={post} />
+        ))
+      ) : (
+        <div>{isLoading ? "Loading..." : "No posts found"}</div>
+      )}
+
     </Grid>
   )
 }
