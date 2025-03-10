@@ -3,7 +3,7 @@ import { useColorMode, useColorModeValue } from "@/components/ui/color-mode"
 
 import { IoMoon } from "react-icons/io5"
 import { LuSun } from "react-icons/lu";
-import CreatePostModal from "./CreatePostModal";
+import CreatePostModal from "./CreatePostDialog";
 import { Link } from "react-router-dom";
 
 

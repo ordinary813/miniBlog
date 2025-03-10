@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dialog"
 
 
-import { BiAddToQueue } from 'react-icons/bi'
+import { BiAddToQueue, BiBorderAll } from 'react-icons/bi'
 import { MdImage } from 'react-icons/md'
 const CreatePostModal = () => {
     return (
