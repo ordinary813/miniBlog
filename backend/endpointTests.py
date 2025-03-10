@@ -42,15 +42,15 @@ def request_delete_posts(post_id):
     print(response.json())
 
 while True:
-    table = input("users/posts (or type 'quit' to exit): ")
+    table = input("users/posts (or type 'q' to exit): ")
 
-    if table == 'quit':
+    if table == 'q':
         break
 
     if table == 'posts':
         while True:
-            action = input("Posts - create/get/delete (or type 'back'): ")
-            if action == 'back':
+            action = input("Posts - create/get/delete (or type 'b'): ")
+            if action == 'b':
                 break
 
             if action == 'create':
@@ -68,8 +68,8 @@ while True:
             print()
     elif table == 'users':
         while True:
-            action = input("Users - create/get/delete/update  (or type 'back'): ")
-            if action == 'back':
+            action = input("Users - create/get/delete/update  (or type 'b'): ")
+            if action == 'b':
                 break
 
             if action == 'create':
