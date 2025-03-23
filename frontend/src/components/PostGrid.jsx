@@ -23,6 +23,7 @@ const PostGrid = ({ posts, setPosts }) => {
     }
     getPosts()
   }, [setPosts])
+  
   return (
     <Grid templateColumns={{
       base: "repeat(1, 1fr)",
